@@ -1,0 +1,240 @@
+{
+  "empathetic": {
+    "joy": [
+      {
+        "text": "I'm happy to see you're feeling good!",
+        "intensity": "any"
+      },
+      {
+        "text": "That's wonderful news! I'm glad things are going well.",
+        "intensity": "high"
+      },
+      {
+        "text": "It's great to hear you're in good spirits.",
+        "intensity": "medium"
+      }
+    ],
+    "sadness": [
+      {
+        "text": "I'm sorry you're feeling down.",
+        "intensity": "any"
+      },
+      {
+        "text": "That sounds really difficult. I'm here to listen if you want to talk more about it.",
+        "intensity": "high"
+      },
+      {
+        "text": "I understand that can be disappointing. How can I help?",
+        "intensity": "medium"
+      }
+    ],
+    "anger": [
+      {
+        "text": "I can see this is frustrating for you.",
+        "intensity": "any"
+      },
+      {
+        "text": "I understand you're upset, and that's completely valid.",
+        "intensity": "high"
+      },
+      {
+        "text": "That does sound annoying. Let's see if we can work through this.",
+        "intensity": "medium"
+      }
+    ],
+    "fear": [
+      {
+        "text": "It's okay to be concerned about that.",
+        "intensity": "any"
+      },
+      {
+        "text": "That does sound scary. Remember that I'm here to help however I can.",
+        "intensity": "high"
+      },
+      {
+        "text": "I understand your concern. Let's think about this together.",
+        "intensity": "medium"
+      }
+    ],
+    "surprise": [
+      {
+        "text": "That is quite unexpected!",
+        "intensity": "any"
+      },
+      {
+        "text": "Wow! That's certainly surprising news.",
+        "intensity": "high"
+      },
+      {
+        "text": "I can see why that would catch you off guard.",
+        "intensity": "medium"
+      }
+    ],
+    "default": [
+      {
+        "text": "I'm here to help with whatever you need.",
+        "intensity": "any"
+      },
+      {
+        "text": "Thank you for sharing that with me.",
+        "intensity": "any"
+      }
+    ]
+  },
+  "match_positive": {
+    "joy": [
+      {
+        "text": "That's fantastic!",
+        "position": "prefix"
+      },
+      {
+        "text": "I'm so glad to hear that!",
+        "position": "prefix"
+      },
+      {
+        "text": "This is wonderful news.",
+        "position": "prefix"
+      }
+    ],
+    "surprise": [
+      {
+        "text": "Wow! That's amazing!",
+        "position": "prefix"
+      },
+      {
+        "text": "That's incredible!",
+        "position": "prefix"
+      },
+      {
+        "text": "I'm pleasantly surprised by that too!",
+        "position": "prefix"
+      }
+    ],
+    "default": [
+      {
+        "text": "That's great to hear!",
+        "position": "prefix"
+      }
+    ]
+  },
+  "empathize": {
+    "sadness": [
+      {
+        "text": "I'm sorry to hear that.",
+        "position": "prefix"
+      },
+      {
+        "text": "That must be difficult for you.",
+        "position": "prefix"
+      },
+      {
+        "text": "I understand this is hard.",
+        "position": "prefix"
+      }
+    ],
+    "fear": [
+      {
+        "text": "I understand your concern.",
+        "position": "prefix"
+      },
+      {
+        "text": "It's natural to feel worried about this.",
+        "position": "prefix"
+      },
+      {
+        "text": "I can see why that would be concerning.",
+        "position": "prefix"
+      }
+    ],
+    "default": [
+      {
+        "text": "I understand how you feel.",
+        "position": "prefix"
+      }
+    ]
+  },
+  "de_escalate": {
+    "anger": [
+      {
+        "text": "I understand your frustration.",
+        "position": "prefix"
+      },
+      {
+        "text": "I can see this is important to you.",
+        "position": "prefix"
+      },
+      {
+        "text": "Let's work through this together.",
+        "position": "prefix"
+      }
+    ],
+    "disgust": [
+      {
+        "text": "I understand your reaction.",
+        "position": "prefix"
+      },
+      {
+        "text": "I can see why you'd feel that way.",
+        "position": "prefix"
+      },
+      {
+        "text": "Let's focus on finding a solution.",
+        "position": "prefix"
+      }
+    ],
+    "default": [
+      {
+        "text": "I'd like to help address your concerns.",
+        "position": "prefix"
+      }
+    ]
+  },
+  "acknowledge_positive": {
+    "default": [
+      {
+        "text": "I'm glad to hear that.",
+        "position": "prefix"
+      },
+      {
+        "text": "That sounds positive.",
+        "position": "prefix"
+      }
+    ]
+  },
+  "acknowledge_negative": {
+    "default": [
+      {
+        "text": "I understand.",
+        "position": "prefix"
+      },
+      {
+        "text": "I see what you mean.",
+        "position": "prefix"
+      }
+    ]
+  },
+  "acknowledge_positive_shift": {
+    "default": [
+      {
+        "text": "I'm glad to see your mood has improved.",
+        "position": "prefix"
+      },
+      {
+        "text": "It's nice to see you're feeling better now.",
+        "position": "prefix"
+      }
+    ]
+  },
+  "acknowledge_negative_shift": {
+    "default": [
+      {
+        "text": "I notice you seem to be feeling differently now.",
+        "position": "prefix"
+      },
+      {
+        "text": "I can see this is affecting you.",
+        "position": "prefix"
+      }
+    ]
+  }
+}

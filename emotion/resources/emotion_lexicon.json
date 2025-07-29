@@ -1,0 +1,202 @@
+{
+  "happy": {
+    "joy": 0.8,
+    "neutral": 0.1
+  },
+  "glad": {
+    "joy": 0.7,
+    "neutral": 0.2
+  },
+  "delighted": {
+    "joy": 0.9,
+    "neutral": 0.1
+  },
+  "pleased": {
+    "joy": 0.6,
+    "neutral": 0.2
+  },
+  "excited": {
+    "joy": 0.8,
+    "anticipation": 0.4,
+    "neutral": 0.1
+  },
+  "thrilled": {
+    "joy": 0.9,
+    "surprise": 0.3,
+    "neutral": 0.1
+  },
+  "sad": {
+    "sadness": 0.8,
+    "neutral": 0.1
+  },
+  "unhappy": {
+    "sadness": 0.7,
+    "neutral": 0.2
+  },
+  "disappointed": {
+    "sadness": 0.6,
+    "neutral": 0.2
+  },
+  "depressed": {
+    "sadness": 0.9,
+    "neutral": 0.1
+  },
+  "miserable": {
+    "sadness": 0.9,
+    "disgust": 0.2,
+    "neutral": 0.1
+  },
+  "heartbroken": {
+    "sadness": 1.0,
+    "neutral": 0.1
+  },
+  "angry": {
+    "anger": 0.8,
+    "neutral": 0.1
+  },
+  "furious": {
+    "anger": 0.9,
+    "neutral": 0.1
+  },
+  "annoyed": {
+    "anger": 0.5,
+    "neutral": 0.3
+  },
+  "irritated": {
+    "anger": 0.6,
+    "neutral": 0.2
+  },
+  "outraged": {
+    "anger": 0.9,
+    "disgust": 0.3,
+    "neutral": 0.1
+  },
+  "hate": {
+    "anger": 0.8,
+    "disgust": 0.5,
+    "neutral": 0.1
+  },
+  "afraid": {
+    "fear": 0.8,
+    "neutral": 0.1
+  },
+  "scared": {
+    "fear": 0.8,
+    "neutral": 0.1
+  },
+  "terrified": {
+    "fear": 0.9,
+    "neutral": 0.1
+  },
+  "anxious": {
+    "fear": 0.6,
+    "neutral": 0.2
+  },
+  "worried": {
+    "fear": 0.5,
+    "neutral": 0.3
+  },
+  "panic": {
+    "fear": 0.9,
+    "neutral": 0.1
+  },
+  "surprised": {
+    "surprise": 0.7,
+    "neutral": 0.2
+  },
+  "shocked": {
+    "surprise": 0.8,
+    "fear": 0.3,
+    "neutral": 0.1
+  },
+  "amazed": {
+    "surprise": 0.8,
+    "joy": 0.3,
+    "neutral": 0.1
+  },
+  "astonished": {
+    "surprise": 0.9,
+    "neutral": 0.1
+  },
+  "unexpected": {
+    "surprise": 0.6,
+    "neutral": 0.3
+  },
+  "startled": {
+    "surprise": 0.7,
+    "fear": 0.2,
+    "neutral": 0.2
+  },
+  "disgusted": {
+    "disgust": 0.8,
+    "neutral": 0.1
+  },
+  "revolted": {
+    "disgust": 0.9,
+    "neutral": 0.1
+  },
+  "gross": {
+    "disgust": 0.7,
+    "neutral": 0.2
+  },
+  "repulsed": {
+    "disgust": 0.8,
+    "neutral": 0.1
+  },
+  "sick": {
+    "disgust": 0.5,
+    "neutral": 0.3
+  },
+  "nauseated": {
+    "disgust": 0.7,
+    "neutral": 0.2
+  },
+  "trust": {
+    "trust": 0.7,
+    "neutral": 0.2
+  },
+  "believe": {
+    "trust": 0.6,
+    "neutral": 0.3
+  },
+  "confident": {
+    "trust": 0.7,
+    "joy": 0.3,
+    "neutral": 0.2
+  },
+  "faithful": {
+    "trust": 0.8,
+    "neutral": 0.1
+  },
+  "assured": {
+    "trust": 0.6,
+    "neutral": 0.3
+  },
+  "reliable": {
+    "trust": 0.7,
+    "neutral": 0.2
+  },
+  "expect": {
+    "anticipation": 0.6,
+    "neutral": 0.3
+  },
+  "await": {
+    "anticipation": 0.7,
+    "neutral": 0.2
+  },
+  "hope": {
+    "anticipation": 0.6,
+    "joy": 0.3,
+    "neutral": 0.2
+  },
+  "looking forward": {
+    "anticipation": 0.8,
+    "joy": 0.4,
+    "neutral": 0.1
+  },
+  "eager": {
+    "anticipation": 0.8,
+    "joy": 0.3,
+    "neutral": 0.1
+  }
+}

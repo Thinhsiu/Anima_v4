@@ -1,0 +1,27 @@
+openai
+openai-whisper
+faster-whisper
+TTS
+PyAudio
+numpy
+webrtcvad
+torch
+torchaudio
+tqdm
+wavefile
+colorama
+requests
+sounddevice
+
+# ML voice emotion detection dependencies
+librosa>=0.10.0
+soundfile>=0.12.1
+transformers>=4.30.0
+
+# NLP system dependencies
+spacy>=3.5.0
+scikit-learn>=1.2.0
+python-dotenv
+nltk
+pytest
+pytest-cov

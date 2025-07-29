@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2025-07-25T15:33:35.316900",
+    "text": "sorry been busy lately working on a huge project that im really excited about",
+    "emotion": "neutral",
+    "intensity": "medium",
+    "confidence": 0.11285714285714285,
+    "profile_id": "default"
+  },
+  {
+    "timestamp": "2025-07-27T17:33:55.540452",
+    "text": "hello",
+    "emotion": "neutral",
+    "intensity": "medium",
+    "confidence": 0.12,
+    "profile_id": "default"
+  },
+  {
+    "timestamp": "2025-07-27T17:46:24.027258",
+    "text": "hello",
+    "emotion": "neutral",
+    "intensity": "medium",
+    "confidence": 0.12,
+    "profile_id": "default"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "default": {
+    "profile_id": "default",
+    "emotions": {
+      "neutral": 3
+    },
+    "dominant_emotion": "neutral",
+    "emotional_stability": 1.0,
+    "emotional_range": [
+      "neutral"
+    ],
+    "created": "2025-07-25T15:33:35.316900",
+    "record_count": 3,
+    "last_updated": "2025-07-27T17:46:24.027258"
+  }
+}

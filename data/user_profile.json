@@ -1,0 +1,11 @@
+{
+    "name": "Your Name",
+    "preferences": {
+        "response_style": "detailed",
+        "topics_of_interest": "philosophy, technology, consciousness"
+    },
+    "background": "Brief description of your background or profession",
+    "interests": ["AI", "meditation", "symbolism"],
+    "relationship": "Your relationship with Anima or what you seek from your interactions",
+    "goals": "What you hope to achieve through conversations with Anima"
+}

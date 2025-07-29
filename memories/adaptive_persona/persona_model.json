@@ -1,0 +1,13 @@
+{
+  "dimensions": {
+    "formal_casual": 0.5,
+    "concise_detailed": 0.5,
+    "serious_lighthearted": 0.5,
+    "technical_simplified": 0.5,
+    "reserved_expressive": 0.55
+  },
+  "learned_preferences": {},
+  "avoided_phrases": [],
+  "preferred_phrases": [],
+  "last_updated": "2025-07-28T22:44:55.966686"
+}

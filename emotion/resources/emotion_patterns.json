@@ -1,0 +1,192 @@
+{
+  "joy": [
+    [
+      "(?:^|\\\\s)(?:love|adore|enjoy)\\\\b",
+      0.7
+    ],
+    [
+      "(?:^|\\\\s)(?:haha|heh|lol)(?:\\\\s|$)",
+      0.5
+    ],
+    [
+      "\\\\b(?:wonderful|fantastic|excellent)\\\\b",
+      0.6
+    ],
+    [
+      "\\\\b(?:best|great|awesome)\\\\b",
+      0.5
+    ],
+    [
+      "[!]{2,}",
+      0.3
+    ]
+  ],
+  "sadness": [
+    [
+      "\\\\b(?:sad|upset|down|blue)\\\\b",
+      0.6
+    ],
+    [
+      "\\\\b(?:miss|missing|missed)\\\\b",
+      0.4
+    ],
+    [
+      "\\\\b(?:alone|lonely|abandoned)\\\\b",
+      0.7
+    ],
+    [
+      "\\\\b(?:never|nothing|empty)\\\\b",
+      0.3
+    ],
+    [
+      "\\\\b(?:sigh|alas)\\\\b",
+      0.5
+    ]
+  ],
+  "anger": [
+    [
+      "\\\\b(?:angry|mad|furious)\\\\b",
+      0.7
+    ],
+    [
+      "\\\\b(?:hate|despise|resent)\\\\b",
+      0.8
+    ],
+    [
+      "\\\\b(?:stupid|idiot|fool)\\\\b",
+      0.6
+    ],
+    [
+      "[!]{3,}",
+      0.4
+    ],
+    [
+      "(?:^|\\\\s)(?:ugh|argh|ugh)(?:\\\\s|$)",
+      0.4
+    ]
+  ],
+  "fear": [
+    [
+      "\\\\b(?:afraid|scared|frightened)\\\\b",
+      0.7
+    ],
+    [
+      "\\\\b(?:worry|worried|anxious)\\\\b",
+      0.5
+    ],
+    [
+      "\\\\b(?:terrified|horrified|petrified)\\\\b",
+      0.8
+    ],
+    [
+      "\\\\b(?:help|dangerous|threat)\\\\b",
+      0.4
+    ],
+    [
+      "\\\\b(?:what if|oh no)\\\\b",
+      0.3
+    ]
+  ],
+  "surprise": [
+    [
+      "\\\\b(?:surprised|shocked|amazed)\\\\b",
+      0.7
+    ],
+    [
+      "\\\\b(?:wow|whoa|oh)\\\\b",
+      0.5
+    ],
+    [
+      "\\\\b(?:unexpected|sudden|strange)\\\\b",
+      0.4
+    ],
+    [
+      "[!?]{2,}",
+      0.3
+    ],
+    [
+      "\\\\b(?:really|seriously|no way)\\\\b",
+      0.4
+    ]
+  ],
+  "disgust": [
+    [
+      "\\\\b(?:disgusting|gross|nasty)\\\\b",
+      0.7
+    ],
+    [
+      "\\\\b(?:eww|ugh|yuck)\\\\b",
+      0.6
+    ],
+    [
+      "\\\\b(?:sick|vomit|nauseous)\\\\b",
+      0.5
+    ],
+    [
+      "\\\\b(?:awful|horrible|terrible)\\\\b",
+      0.4
+    ],
+    [
+      "\\\\b(?:hate|can't stand)\\\\b",
+      0.5
+    ]
+  ],
+  "trust": [
+    [
+      "\\\\b(?:trust|believe|faith)\\\\b",
+      0.7
+    ],
+    [
+      "\\\\b(?:honest|true|reliable)\\\\b",
+      0.6
+    ],
+    [
+      "\\\\b(?:sure|certain|confident)\\\\b",
+      0.5
+    ],
+    [
+      "\\\\b(?:depend|count on)\\\\b",
+      0.6
+    ],
+    [
+      "\\\\b(?:promise|swear|guarantee)\\\\b",
+      0.5
+    ]
+  ],
+  "anticipation": [
+    [
+      "\\\\b(?:expect|anticipate|await)\\\\b",
+      0.6
+    ],
+    [
+      "\\\\b(?:hope|wish|look forward)\\\\b",
+      0.5
+    ],
+    [
+      "\\\\b(?:soon|about to|going to)\\\\b",
+      0.4
+    ],
+    [
+      "\\\\b(?:excited for|can't wait)\\\\b",
+      0.7
+    ],
+    [
+      "\\\\b(?:tomorrow|next|coming)\\\\b",
+      0.3
+    ]
+  ],
+  "neutral": [
+    [
+      "\\\\b(?:is|are|was|were)\\\\b",
+      0.2
+    ],
+    [
+      "\\\\b(?:the|a|an)\\\\b",
+      0.1
+    ],
+    [
+      "\\\\b(?:it|this|that)\\\\b",
+      0.1
+    ]
+  ]
+}
