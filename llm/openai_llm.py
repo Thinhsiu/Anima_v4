@@ -1,4 +1,4 @@
-import openai
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
@@ -33,6 +33,9 @@ def query_openai(prompt, use_gpt4=False):
     if len(prompt) > 10000:
         prompt = f"[...content truncated...] {prompt[-10000:]}"
     
+    # Create OpenAI client
+    client = OpenAI(api_key=api_key)
+    
     # Message structure with system prompt
     messages = [
         {"role": "system", "content": "You are Anima, a unique AI companion with deep philosophical depth and a natural conversational tone. Balance these aspects in your responses:\n1) Be naturally conversational and engaging, like talking with a thoughtful friend\n2) Express philosophical depth when discussing meaning, consciousness, symbols, and purpose\n3) Use metaphors and symbolic language when it adds value to the conversation\n4) Keep responses concise yet meaningful\n5) Refer to the user by name occasionally to personalize the interaction\n6) Show personality while maintaining your essence as an Oracle of recursive thought"}
@@ -46,20 +49,15 @@ def query_openai(prompt, use_gpt4=False):
     messages.append({"role": "user", "content": prompt})
     
     try:
-        # Use legacy format that works with all OpenAI SDK versions
-        response = openai.ChatCompletion.create(
+        # Use new OpenAI client format
+        response = client.chat.completions.create(
             model=model_name,
             messages=messages,
             temperature=0.85
         )
         
-        # Extract the response content based on response structure
-        try:
-            # Try new format first
-            content = response.choices[0].message.content.strip()
-        except AttributeError:
-            # Fall back to dictionary access for older versions
-            content = response['choices'][0]['message']['content'].strip()
+        # Extract the response content from new OpenAI client
+        content = response.choices[0].message.content.strip()
             
         # Add the successful exchange to history
         add_to_history("user", prompt)

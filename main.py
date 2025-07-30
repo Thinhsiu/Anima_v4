@@ -760,9 +760,6 @@ def main():
     # TTS handling with error recovery
     tts_error = None
     try:
-        import openai
-        if openai_api_key:
-            openai.api_key = openai_api_key
         from tts.openai_voice import speak
         speak(greeting_msg)
     except Exception as e:

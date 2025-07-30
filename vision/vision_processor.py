@@ -11,7 +11,7 @@ parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
-import openai
+from openai import OpenAI
 from PIL import Image
 from io import BytesIO
 
@@ -74,12 +74,11 @@ def analyze_image(image_path, prompt=None):
         if not api_key:
             raise ValueError("No OpenAI API key found in environment variables")
             
-        # Set the API key
-        openai.api_key = api_key
-            
-        # Call the OpenAI API
-        response = openai.ChatCompletion.create(
-            model="gpt-4-vision-preview",
+        # Call the OpenAI API with current vision model
+        client = OpenAI(api_key=api_key)
+        
+        response = client.chat.completions.create(
+            model="gpt-4o",  # Current vision model
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that analyzes images."},
                 {"role": "user", "content": message_content}
@@ -87,13 +86,8 @@ def analyze_image(image_path, prompt=None):
             max_tokens=500
         )
         
-        # Extract the analysis
-        try:
-            # Try new format first
-            analysis = response.choices[0].message.content.strip()
-        except AttributeError:
-            # Fall back to dictionary access
-            analysis = response['choices'][0]['message']['content'].strip()
+        # Extract the analysis from new OpenAI client response
+        analysis = response.choices[0].message.content.strip()
         
         result = {
             "image_path": image_path,
