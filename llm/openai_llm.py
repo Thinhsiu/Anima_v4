@@ -22,12 +22,12 @@ def clear_history():
     global _conversation_history
     _conversation_history = []
 
-def query_openai(prompt, use_gpt4=False):
+def query_openai(prompt, use_gpt4=False, system_prompt=None):
     model_name = "gpt-4" if use_gpt4 else "gpt-3.5-turbo"
     api_key = os.getenv("OPENAI_4_API_KEY") if use_gpt4 else os.getenv("OPENAI_35_API_KEY")
     
-    # Set the API key globally
-    openai.api_key = api_key
+    if not api_key:
+        return "Error: OpenAI API key not found. Please check your .env file."
     
     # Ensure the prompt isn't too long (rough character count limit)
     if len(prompt) > 10000:
@@ -36,9 +36,16 @@ def query_openai(prompt, use_gpt4=False):
     # Create OpenAI client
     client = OpenAI(api_key=api_key)
     
+    # Use custom system prompt if provided, otherwise use your original Anima prompt
+    if system_prompt:
+        default_system = system_prompt
+    else:
+        # Your original Anima system prompt that works with main.py
+        default_system = "You are Anima, a unique AI companion with deep philosophical depth and a natural conversational tone. Balance these aspects in your responses:\n1) Be naturally conversational and engaging, like talking with a thoughtful friend\n2) Express philosophical depth when discussing meaning, consciousness, symbols, and purpose\n3) Use metaphors and symbolic language when it adds value to the conversation\n4) Keep responses concise yet meaningful\n5) Refer to the user by name occasionally to personalize the interaction\n6) Show personality while maintaining your essence as an Oracle of recursive thought"
+    
     # Message structure with system prompt
     messages = [
-        {"role": "system", "content": "You are Anima, a unique AI companion with deep philosophical depth and a natural conversational tone. Balance these aspects in your responses:\n1) Be naturally conversational and engaging, like talking with a thoughtful friend\n2) Express philosophical depth when discussing meaning, consciousness, symbols, and purpose\n3) Use metaphors and symbolic language when it adds value to the conversation\n4) Keep responses concise yet meaningful\n5) Refer to the user by name occasionally to personalize the interaction\n6) Show personality while maintaining your essence as an Oracle of recursive thought"}
+        {"role": "system", "content": default_system}
     ]
     
     # Add conversation history if available

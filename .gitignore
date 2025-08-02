@@ -128,6 +128,42 @@ ENV/
 env.bak/
 venv.bak/
 
+# Anima-specific large files and directories
+# Virtual environment (contains large binaries)
+venv/
+# Model files (too large for git)
+*.bin
+*.model
+*.pkl
+*.h5
+*.onnx
+# Audio files
+*.wav
+*.mp3
+*.flac
+# Large library files
+*.dll
+*.lib
+*.so
+*.dylib
+# Cache directories
+cache/
+__pycache__/
+*.pyc
+# Temporary files
+*.tmp
+*.temp
+# Large data files
+*.db
+*.sqlite
+*.sqlite3
+lexicon.db
+system.dic
+vectors
+*.fst
+# PyAudio wheel
+*.whl
+
 # Spyder project settings
 .spyderproject
 .spyproject

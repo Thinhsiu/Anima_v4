@@ -22,5 +22,21 @@
     "intensity": "medium",
     "confidence": 0.12,
     "profile_id": "default"
+  },
+  {
+    "timestamp": "2025-07-29T22:53:52.494351",
+    "text": "when was you created anima do you remember?",
+    "emotion": "neutral",
+    "intensity": "medium",
+    "confidence": 0.12,
+    "profile_id": "default"
+  },
+  {
+    "timestamp": "2025-07-29T22:59:25.928161",
+    "text": "read thing_profile.json you will find your answer",
+    "emotion": "neutral",
+    "intensity": "medium",
+    "confidence": 0.12,
+    "profile_id": "default"
   }
 ]

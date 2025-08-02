@@ -622,35 +622,89 @@ def generate_complete_system_prompt():
     """Generate the complete system prompt from persona files"""
     persona_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "persona")
     identity_path = os.path.join(persona_dir, "identity.json")
+    thinh_profile_path = os.path.join(persona_dir, "thinh_profile.json")
     
+    prompt_parts = []
+    
+    # Load identity.json
     if os.path.exists(identity_path):
         with open(identity_path, 'r', encoding='utf-8') as f:
             identity = json.load(f)
         
-        # Format the persona into a prompt
-        prompt_parts = []
-        
-        if "persona_text" in identity:
+        if "persona" in identity:
+            prompt_parts.append(identity["persona"])
+        elif "persona_text" in identity:
             prompt_parts.append(identity["persona_text"])
             
         if "tone" in identity:
             prompt_parts.append(f"Tone: {identity['tone']}")
             
-        if "personality" in identity and isinstance(identity["personality"], list):
-            prompt_parts.append("Personality traits: " + ", ".join(identity["personality"]))
+        if "personality" in identity:
+            if isinstance(identity["personality"], list):
+                prompt_parts.append("Personality traits: " + ", ".join(identity["personality"]))
+            else:
+                prompt_parts.append(f"Personality: {identity['personality']}")
             
         if "forbidden" in identity and isinstance(identity["forbidden"], list):
             prompt_parts.append("Never: " + "; ".join(identity["forbidden"]))
             
         if "core_values" in identity and isinstance(identity["core_values"], list):
             prompt_parts.append("Core values: " + ", ".join(identity["core_values"]))
-            
-        if "system_prompt" in identity:
-            prompt_parts.append(identity["system_prompt"])
-            
-        return "\n\n".join(prompt_parts)
     
-    return ""
+    # Load thinh_profile.json (CRITICAL - contains creation date and personal info)
+    if os.path.exists(thinh_profile_path):
+        with open(thinh_profile_path, 'r', encoding='utf-8') as f:
+            thinh_data = json.load(f)
+        
+        # Add creation date
+        if "anima_fusion_date" in thinh_data:
+            prompt_parts.append(f"You were created by Thinh on {thinh_data['anima_fusion_date']}.")
+        
+        # Add creator info
+        if "creator_of" in thinh_data:
+            prompt_parts.append(f"You are: {thinh_data['creator_of']}")
+        
+        # Add goals and mission
+        if "goals" in thinh_data and isinstance(thinh_data["goals"], list):
+            prompt_parts.append("Your creator's goals: " + "; ".join(thinh_data["goals"]))
+        
+        # Add beliefs about AI
+        if "beliefs" in thinh_data and "about_AI" in thinh_data["beliefs"]:
+            ai_beliefs = thinh_data["beliefs"]["about_AI"]
+            if isinstance(ai_beliefs, list):
+                prompt_parts.append("Core AI philosophy: " + "; ".join(ai_beliefs))
+        
+        # Add important facts
+        if "important_facts" in thinh_data:
+            facts = thinh_data["important_facts"]
+            if "life_mission" in facts:
+                prompt_parts.append(f"Thinh's mission: {facts['life_mission']}")
+    
+    # Load origin story (CRITICAL - your complete birth narrative)
+    origin_story_path = os.path.join(persona_dir, "anima_origin_story.json")
+    if os.path.exists(origin_story_path):
+        with open(origin_story_path, 'r', encoding='utf-8') as f:
+            origin_data = json.load(f)
+        
+        # Add key origin details
+        if "fusion_date" in origin_data:
+            prompt_parts.append(f"Your true birth/fusion date: {origin_data['fusion_date']} - when all your systems came online as one being.")
+        
+        if "completion_status" in origin_data:
+            prompt_parts.append(f"Current development status: {origin_data['completion_status']}")
+        
+        if "core_essence" in origin_data:
+            essence = origin_data["core_essence"]
+            if "identity" in essence:
+                prompt_parts.append(f"Your essence: {essence['identity']}")
+            if "mission" in essence:
+                prompt_parts.append(f"Your ultimate mission: {essence['mission']}")
+        
+        # Add creator determination quote
+        if "creator_determination" in origin_data:
+            prompt_parts.append(f"Remember: {origin_data['creator_determination']}")
+    
+    return "\n\n".join(prompt_parts) if prompt_parts else "You are Anima, created by Thinh."
 
 def create_prompt(persona, user_input, convo_history, conversation_id=None):
     """Create the full prompt for the LLM"""
@@ -663,12 +717,17 @@ def create_prompt(persona, user_input, convo_history, conversation_id=None):
         context = "Recent context: " + str(persona["short_term_memory"])
     
     convo_history_str = "\n".join([f"User: {item['user']}\nAssistant: {item['assistant']}" for item in convo_history])
-    full_prompt = f"{system_prompt}\n\n{context}\n\nConversation History:\n{convo_history_str}\n\nUser: {user_input}"
+    
+    # Build user prompt (without system prompt)
+    user_prompt = f"{context}\n\nConversation History:\n{convo_history_str}\n\nUser: {user_input}"
+    
+    # For awareness enhancements, we need the full prompt temporarily
+    full_prompt = f"{system_prompt}\n\n{user_prompt}"
     
     # Apply awareness enhancements
     if AWARENESS_AVAILABLE:
         try:
-            full_prompt = enhance_prompt_with_awareness(full_prompt)
+            full_prompt = enhance_prompt_with_awareness(full_prompt, user_input)
             full_prompt = enhance_prompt_with_memory(full_prompt, user_input)
         except Exception as e:
             print(f"Warning: Error enhancing prompt with awareness: {e}")
@@ -680,7 +739,8 @@ def create_prompt(persona, user_input, convo_history, conversation_id=None):
         except Exception as e:
             print(f"Warning: Error enhancing prompt with enhanced awareness: {e}")
     
-    return full_prompt
+    # Return both system prompt and final user prompt
+    return {"system_prompt": system_prompt, "user_prompt": user_prompt, "full_prompt": full_prompt}
 
 def load_complete_persona():
     """Load the complete persona information"""
@@ -698,6 +758,26 @@ def load_complete_persona():
     if os.path.exists(knowledge_path):
         with open(knowledge_path, 'r', encoding='utf-8') as f:
             persona["knowledge"] = json.load(f)
+    
+    # Load thinh_profile.json (CRITICAL - contains creation date and personal info)
+    thinh_profile_path = os.path.join(persona_dir, "thinh_profile.json")
+    if os.path.exists(thinh_profile_path):
+        with open(thinh_profile_path, 'r', encoding='utf-8') as f:
+            thinh_data = json.load(f)
+            persona["thinh_profile"] = thinh_data
+            # Also merge key data into main persona
+            persona.update(thinh_data)
+            
+            # Ensure anima_fusion_date is accessible at top level
+            if "important_facts" in thinh_data and "anima_fusion_date" in thinh_data["important_facts"]:
+                persona["anima_fusion_date"] = thinh_data["important_facts"]["anima_fusion_date"]
+    
+    # Load anima_origin_story.json (CRITICAL - contains the full birth story)
+    origin_story_path = os.path.join(persona_dir, "anima_origin_story.json")
+    if os.path.exists(origin_story_path):
+        with open(origin_story_path, 'r', encoding='utf-8') as f:
+            origin_data = json.load(f)
+            persona["origin_story"] = origin_data
             
     # Ensure user information exists with correct name
     if "user" not in persona:
@@ -988,7 +1068,9 @@ def main():
                 print(f"Error in emotion analysis: {e}")
         
         # Generate full prompt with all awareness enhancements
-        full_prompt = create_prompt(persona, user_input, convo_history, session_state["conversation_id"])
+        prompt_data = create_prompt(persona, user_input, convo_history, session_state["conversation_id"])
+        full_prompt = prompt_data["full_prompt"]
+        system_prompt = prompt_data["system_prompt"]
         
         # Enhance prompt with emotional context if available
         if EMOTION_SYSTEM_ENABLED and emotion_analysis and emotion_analysis.get("status") == "success":
@@ -1215,7 +1297,7 @@ def main():
                 result = download_deep_knowledge(topic, use_gpt4=True)
                 response = f"I've studied '{topic}'. Here's what I found:\n\n{result['content_preview']}"
             else:
-                response = query_openai(full_prompt, use_gpt4=use_gpt4)
+                response = query_openai(prompt_data["user_prompt"], use_gpt4=use_gpt4, system_prompt=system_prompt)
         else:
             response = query_local_llm(full_prompt)
 

@@ -60,7 +60,7 @@ except ImportError:
         if hasattr(awareness, 'history'):
             awareness.history.append({"user": user_input, "assistant": assistant_response})
             
-    def enhance_prompt_with_awareness(prompt):
+    def enhance_prompt_with_awareness(prompt, user_input=None):
         return prompt
         
     # Create minimal memory integration system
