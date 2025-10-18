@@ -1,7 +1,6 @@
 openai
 openai-whisper
 faster-whisper
-git+https://github.com/coqui-ai/TTS.git
 PyAudio
 numpy
 webrtcvad
