@@ -5,6 +5,7 @@ numpy
 tqdm
 colorama
 requests
+uvicorn
 
 # NLP system dependencies
 spacy>=3.5.0
